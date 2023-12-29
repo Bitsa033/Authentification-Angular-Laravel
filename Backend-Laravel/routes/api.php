@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +26,19 @@ Route::post('user/store', [UserController::class,'store']);
 Route::post('user/login', [UserController::class,'login']);
 Route::get('user/show/{id}', [UserController::class,'show']);
 Route::put('user/update/{id}', [UserController::class,'update']);
+
+Route::group([
+    'as' => 'passport.',
+    'prefix' => config('passport.path', 'oauth'),
+    'namespace' => '\Laravel\Passport\Http\Controllers',
+], function () {
+    // Passport routes...
+});
+
+// $response = Http::withHeaders([
+//     'Accept' => 'application/json',
+//     'Authorization' => 'Bearer '.$accessToken,
+// ])->get('https://passport-app.test/api/user');
+ 
+// return $response->json();
 
