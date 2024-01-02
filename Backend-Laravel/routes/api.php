@@ -27,18 +27,8 @@ Route::post('user/login', [UserController::class,'login']);
 Route::get('user/show/{id}', [UserController::class,'show']);
 Route::put('user/update/{id}', [UserController::class,'update']);
 
-Route::group([
-    'as' => 'passport.',
-    'prefix' => config('passport.path', 'oauth'),
-    'namespace' => '\Laravel\Passport\Http\Controllers',
-], function () {
-    // Passport routes...
-});
-
-// $response = Http::withHeaders([
-//     'Accept' => 'application/json',
-//     'Authorization' => 'Bearer '.$accessToken,
-// ])->get('https://passport-app.test/api/user');
- 
-// return $response->json();
+Route::post('user/logout', [UserController::class,'logout'])->middleware('auth:sanctum');;
+// Route::group(['middleware'=>['auth:api']],function(){
+//     Route::post('user/logout', 'Api\AuthController@logout');    
+// });
 
