@@ -49,6 +49,14 @@ class UserController extends Controller
         return response()->json(['message' => 'Utilisateur déconnecté'], 200);
     }
 
+    /**
+     * On affiche le formulaire de reinitialisation du mot de passe
+     */
+    public function recoverPassword(Request $request)
+    {
+        return "recover password";
+    }
+
 
     /**
      * On affiche la liste des users
